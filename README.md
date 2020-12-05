@@ -25,6 +25,7 @@ In addition, the files are all sorted by SSN, i.e. the SSN values appear in the 
 For now these four iterators are just separate, independent iterators.
 
 ### Solution Notebook: [session16_asg1.ipynb](https://github.com/SachinDangayach/session16-SachinDangayach/blob/master/session16.ipynb)
+### Solution Py Module: [session16.py](https://github.com/SachinDangayach/session16-SachinDangayach/blob/master/session16.py)
 
 ### Solution:
 We have created following iterators using Context managers while extracting data from files-
