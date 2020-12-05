@@ -74,3 +74,31 @@ Possibly more than one such group per gender exists (equal sizes).
 ### Solution:
 We have created following iterators using Context managers while extracting data from files-
 - largest_group: Get the files and the gender type as input and return the largest groups for gender
+
+## Assignment 2
+<p><i> The file is:
+
+- cars.csv
+
+## Solution
+### Solution Notebook: [session16_asg2.ipynb](https://github.com/SachinDangayach/session16-SachinDangayach/blob/master/session16_asg2.ipynb)
+### Solution Py Module: [session16.py](https://github.com/SachinDangayach/session16-SachinDangayach/blob/master/session16.py)
+
+### Goal 1
+<p>
+For this goal, you are given a number of CSV files, each of which have their first row with the field name.
+You goal is to create a context manager that you can use to produce the data from each file in a named tuple with field names corresponding to the header row field names. You should use the csv module's reader function to help with parsing the data. Your context manager should be generic in the sense that it should just need the file name, no other configuration or hardcoded functionality is required. You do not need to worry about data types for this goal - just return every field as a string. In addition, your context manager should produce lazy iterators. Implement this using a class that implements the context manager protocol.
+
+### Solution:
+We have created the Custom contextmanager class which implements \_\__enter__ and \_\__exit__ methods apart from methods to make iterator
+- CustomContextManager: Custom context manager class to read a read file
+- get_rows_from_file: Generator to parse file in lazy mode (generating one row at a time)
+
+## Goal 2
+<p>
+The goal is to reproduce the work you did in Goal 1, but using a generator function and the contextlib contextmanager decorator.
+
+### Solution:
+We have used the inbuilt contextmanager decorator
+- StandardContextManager: Use inbuilt context manager to read the file
+- get_rows_from_file_standard: Generator to parse file in lazy mode (generating one row at a time)

@@ -3,7 +3,6 @@
 from datetime import datetime
 from collections import namedtuple
 from collections import Counter
-from contextlib import contextmanager
 import csv
 
 def get_datetime_object(date_time):
@@ -174,66 +173,3 @@ def largest_group(f_personal_info,f_vehicles_info,f_emp_info,f_status,gender):
     top_car_maker = [k for k,v in car_makers.items() if v == highest_value]
 
     return top_car_maker
-
-# Assignment 2
-# 1 create a context manager that you can use to produce the data from each file in a named tuple with field
-# names corresponding to the header row field names.
-class CustomContextManager:
-    """Custom context manager class to read a read file"""
-    def __init__(self, fname):
-        self._fname = fname
-        self._f = None
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        return next(self._rows)
-
-    def __enter__(self):
-        print('opening file...')
-        self._f = open(self._fname)
-        dialect = csv.Sniffer().sniff(self._f.readline(), [',',';'])
-        self._f.seek(0)
-        self._rows = csv.reader(self._f, delimiter=dialect.delimiter, quotechar=dialect.quotechar)
-        return self
-
-    def __exit__(self, exc_type, exc_value, exc_tb):
-        print('closing file...')
-        if not self._f.closed:
-            self._f.close()
-        return False
-
-def get_rows_from_file(fname):
-    """Generator to parse file in lazy mode (generating one row at a time)"""
-    with CustomContextManager(fname) as f:
-        headers = next(f)
-        headers = (item.replace(" ", "_") for item in headers)
-        RowData = namedtuple('RowData', headers)
-        for row in f:
-            yield RowData(*row)
-
-@contextmanager
-def StandardContextManager(fname):
-    """
-    Use inbuilt context manager to read the file
-    """
-    print('opening file...')
-    f = open(fname)
-    dialect = csv.Sniffer().sniff(f.readline(), [',',';'])
-    f.seek(0)
-    rows = csv.reader(f, delimiter=dialect.delimiter, quotechar=dialect.quotechar)
-    try:
-        yield rows
-    finally:
-        print('closing file...')
-        f.close()
-
-def get_rows_from_file_standard(fname):
-    """Generator to parse file in lazy mode (generating one row at a time)"""
-    with StandardContextManager(fname) as f:
-        headers = next(f)
-        headers = (item.replace(" ", "_") for item in headers)
-        RowData = namedtuple('RowData', headers)
-        for row in f:
-            yield RowData(*row)
