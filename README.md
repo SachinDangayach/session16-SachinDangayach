@@ -24,7 +24,7 @@ In addition, the files are all sorted by SSN, i.e. the SSN values appear in the 
 <p> Your first task is to create iterators for each of the four files that contained cleaned up data, of the correct type (e.g. string, int, date, etc), and represented by a named tuple.
 For now these four iterators are just separate, independent iterators.
 
-### Solution Notebook: [session16_asg1.ipynb](https://github.com/SachinDangayach/session16-SachinDangayach/blob/master/session16.ipynb)
+### Solution Notebook: [session16_asg1.ipynb](https://github.com/SachinDangayach/session16-SachinDangayach/blob/master/session16_asg1.ipynb)
 ### Solution Py Module: [session16.py](https://github.com/SachinDangayach/session16-SachinDangayach/blob/master/session16.py)
 
 ### Solution:
